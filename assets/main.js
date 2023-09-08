@@ -21,6 +21,8 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
 
 
 
+
+
 //Milestone 1
 const posts = [
     {
@@ -114,6 +116,34 @@ socialFeed.innerHTML= `<div class="post">
     </div> 
 </div>            
 </div>`
+
+//miilestone 3
+//seleziono tutti gli elementi con le classi che mi servono
+const likeButtons = document.querySelectorAll('.like-button')
+const likeNumber = document.querySelectorAll('.js-likes-counter')
+//uso una variabile booleana per dire quando attivo o no
+let active = false;
+    
+//uso ciclo foreach e aggiungo l'evento click sul like
+likeButtons.forEach((element, i) => {
+    element.addEventListener('click', function like(e) {
+        e.preventDefault();
+
+        //condizione if per dire quando è attivo o no(aggiungere css) e contatore +1 
+        if (active) {
+            active = false;
+            likeNumber[i].innerHTML = Number(likeNumber[i].innerHTML) - 1;
+            likeButtons[i].classList.remove('like-button_active');
+        } else {
+            active = true;
+            likeNumber[i].innerHTML = Number(likeNumber[i].innerHTML) + 1;
+            likeButtons[i].classList.add('like-button_active');
+        }
+    });
+});
+
+
+
 
 
 
